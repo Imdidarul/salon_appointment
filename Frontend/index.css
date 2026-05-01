@@ -1,5 +1,6 @@
 /* 1. Global Reset & Body Background */
 body {
+    background-image: url("../assets//background_index.jpg");
     background-color: #000;
     margin: 0;
     padding: 0;
@@ -87,8 +88,23 @@ body {
     display: none; /* Usually, H1 inside a flex-row carousel breaks the layout */
 }
 
+.services-container{
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+}
+
 /* 4. Individual Service Card Styling */
 .service {
+    min-width: 300px; /* Prevents cards from squishing */
+    background-color: #1c1c1c;
+    border-radius: 15px;
+    padding: 15px;
+    /* Add a green border to the active/hovered card like in your image */
+    border: 1px solid transparent;
+    transition: border 0.3s;
     flex: 0 0 320px;        /* Fixes card width to 320px; prevents shrinking */
     background-color: #1c1c1c;
     border-radius: 15px;
@@ -102,7 +118,7 @@ body {
 }
 
 .service:hover {
-    border: 1px solid green;
+    border: 1px solid #28a745;
 }
 
 .service h2 {

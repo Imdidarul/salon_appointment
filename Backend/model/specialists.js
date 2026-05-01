@@ -1,4 +1,4 @@
-const sequelize = require("../conifg/dbConnection")
+const sequelize = require("../config/dbConnection")
 const {DataTypes} = require("sequelize")
 const specialists = sequelize.define(
     "specialists",{
@@ -13,10 +13,12 @@ const specialists = sequelize.define(
             allowNull: false
         },
         specialisation:{
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
+            allowNull:false
         },
         rating:{
-            type:DataTypes.INTEGER
+            type:DataTypes.INTEGER,
+            allowNull:false
         }
     }
 )

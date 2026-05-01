@@ -1,4 +1,4 @@
-const sequelize = require("../conifg/dbConnection")
+const sequelize = require("../config/dbConnection")
 const {DataTypes} = require("sequelize")
 const bookingSlots = sequelize.define(
     "bookingSlots",{
@@ -13,13 +13,16 @@ const bookingSlots = sequelize.define(
             allowNull: false
         },
         serviceId:{
-            type: DataTypes.INTEGER
+            type: DataTypes.INTEGER,
+            allowNull:false
         },
         date:{
-            type:DataTypes.DATE
+            type:DataTypes.DATE,
+            allowNull:false
         },
         time:{
-            type:DataTypes.STRING
+            type:DataTypes.STRING,
+            allowNull:false
         }
     }
 )

@@ -1,0 +1,116 @@
+/* General Reset and Body */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #000;
+    color: #fff;
+    padding: 40px 20px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+    font-size: 3rem;
+    letter-spacing: 5px;
+    margin-bottom: 40px;
+    color: #fff;
+}
+
+/* Service Details Section */
+.serviceDetails {
+    display: flex;
+    gap: 30px;
+    background-color: #1c1c1c;
+    padding: 30px;
+    border-radius: 15px;
+    margin-bottom: 50px;
+    align-items: center;
+}
+
+.serviceDetails img {
+    width: 40%;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.serviceDetails p {
+    line-height: 1.6;
+    color: #ccc;
+}
+
+.serviceDetails p:last-child {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #28a745; /* Matching the green from your search button */
+    margin-top: 15px;
+}
+
+/* Specialists Container */
+.specialists {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.specialist {
+    background-color: #1c1c1c;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #333;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.specialist:hover {
+    border-color: #28a745;
+    transform: translateY(-5px);
+}
+
+.specialist p {
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+/* Booking Slots (Buttons) */
+.bookingSlots {
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.bookingSlots button {
+    background-color: transparent;
+    color: #fff;
+    border: 1px solid #444;
+    padding: 10px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    flex: 1 1 45%; /* Makes two buttons per row usually */
+    transition: all 0.2s ease;
+}
+
+.bookingSlots button:hover {
+    background-color: #28a745;
+    border-color: #28a745;
+    font-weight: bold;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .serviceDetails {
+        flex-direction: column;
+    }
+    .serviceDetails img {
+        width: 100%;
+    }
+}

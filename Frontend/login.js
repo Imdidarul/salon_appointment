@@ -25,3 +25,7 @@ function handleFormSubmit(event){
         }
     })
 }
+
+window.addEventListener("DOMContentLoaded",()=>{
+    localStorage.clear()
+})
