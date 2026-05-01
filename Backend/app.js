@@ -2,6 +2,7 @@ const express = require("express")
 const app = express()
 const cors = require("cors")
 require("dotenv").config()
+require("./model")
 const db = require("./conifg/dbConnection")
 const userRoute = require("./route/userRoute")
 

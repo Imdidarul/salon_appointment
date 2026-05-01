@@ -63,4 +63,37 @@ const validate = async (req,res)=>{
 }
 
 
-module.exports = {addUser,validate}
+
+const verifyUser = async (req,res)=>{
+    try {
+     
+    const authHeader = req.headers['authorization']
+    
+    if(!authHeader){
+        return res.status(403).send("No token found")
+    }
+
+    const token = authHeader.split(' ')[1]
+    // console.log(token)
+
+    if (!token){
+        return res.status(403).send("No token found")
+    }
+
+    const decryptedToken = jwt.verify(token,process.env.AUTH_SECRET_KEY)
+    // console.log(decryptedToken)
+    const userId = decryptedToken.userId
+
+    const user = await User.findByPk(userId)
+
+    if (!user){
+        return res.status(403).send("No user found")
+    }
+
+    return res.status(200).send("User is valid")   
+    } catch (error) {
+     return res.status(401).send("Something went wrong")   
+    }
+}
+
+module.exports = {addUser,validate, verifyUser}
