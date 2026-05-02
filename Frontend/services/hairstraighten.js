@@ -1,18 +1,13 @@
-// 1. Set the Service ID specifically for Hair Straightening
-// Ensure this matches the ID in your 'services' table in the DB
 const SERVICE_ID = 2; 
 const BASE_URL = "http://localhost:3000";
 
-/**
- * Fetch specialists and render them
- */
 async function loadSpecialists() {
     try {
         const response = await axios.get(`${BASE_URL}/specialist/getAllSpecialists`);
         const specialists = response.data.specialists;
         const container = document.querySelector(".specialists");
 
-        // Clear hardcoded static HTML
+
         container.innerHTML = "";
 
         specialists.forEach(sp => {
@@ -20,7 +15,6 @@ async function loadSpecialists() {
             spDiv.className = "specialist";
             spDiv.dataset.spid = sp.id;
 
-            // Using unique IDs for date inputs to avoid DOM conflicts
             spDiv.innerHTML = `
                 <p><strong>Name:</strong> ${sp.name}</p>
                 <p><strong>Rating:</strong> ${sp.rating}/10</p>
@@ -44,14 +38,10 @@ async function loadSpecialists() {
     }
 }
 
-/**
- * Attach event listeners to the time slot buttons
- */
 function setupBookingListeners() {
     const container = document.querySelector(".specialists");
 
     container.addEventListener("click", async (e) => {
-        // Check if the clicked element is a slot button
         if (e.target.classList.contains("slot-btn")) {
             const button = e.target;
             const specialistDiv = button.closest(".specialist");
@@ -61,13 +51,11 @@ function setupBookingListeners() {
             const selectedDate = dateInput.value;
             const selectedTime = button.innerText;
 
-            // 1. Validation
             if (!selectedDate) {
                 alert("Please select a date first!");
                 return;
             }
 
-            // 2. Auth Check
             const token = localStorage.getItem("token");
             const userId = localStorage.getItem("userId");
 
@@ -77,8 +65,6 @@ function setupBookingListeners() {
                 return;
             }
 
-            // 3. Prepare Data
-            // Note: time is sent as a string that Sequelize can parse into a DATE/DATETIME
             const bookingData = {
                 name: "Hair Straightening Appointment",
                 userId: userId,
@@ -87,9 +73,8 @@ function setupBookingListeners() {
                 time: `${selectedDate} ${selectedTime.split('-')[0].trim()}`
             };
 
-            // 4. API Call
             try {
-                button.disabled = true; // Prevent double-clicking
+                button.disabled = true;
                 button.innerText = "Booking...";
 
                 const response = await axios.post(`${BASE_URL}/booking/addBooking`, bookingData, {
@@ -97,7 +82,7 @@ function setupBookingListeners() {
                 });
 
                 alert("Success! Your hair straightening session is booked.");
-                window.location.href = "index.html"; // Send them back to home
+                window.location.href = "index.html";
             } catch (error) {
                 console.error("Booking Error:", error);
                 alert(error.response?.data || "Something went wrong during booking.");

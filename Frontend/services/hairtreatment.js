@@ -1,20 +1,14 @@
-// Configuration
 const SERVICE_ID = 3; 
 const API_BASE_URL = "http://localhost:3000";
 
-/**
- * Load specialists from the database and populate the UI
- */
 async function loadSpecialists() {
     try {
         const response = await axios.get(`${API_BASE_URL}/specialist/getAllSpecialists`);
         const specialists = response.data.specialists;
         const container = document.querySelector(".specialists");
 
-        // Clear existing static content
         container.innerHTML = "";
 
-        // Get today's date in YYYY-MM-DD format to prevent past bookings
         const today = new Date().toISOString().split('T')[0];
 
         specialists.forEach(sp => {
@@ -45,9 +39,7 @@ async function loadSpecialists() {
     }
 }
 
-/**
- * Handle booking slot clicks using event delegation
- */
+
 function setupBookingListeners() {
     const container = document.querySelector(".specialists");
 
@@ -56,19 +48,19 @@ function setupBookingListeners() {
             const button = e.target;
             const specialistDiv = button.closest(".specialist");
             
-            // Collect Data
+            
             const spId = specialistDiv.dataset.spid;
             const dateInput = specialistDiv.querySelector(".bookingDate");
             const selectedDate = dateInput.value;
             const selectedTime = button.innerText;
 
-            // 1. Validation
+            
             if (!selectedDate) {
                 alert("Please select a date for your treatment.");
                 return;
             }
 
-            // 2. Authorization Check
+            
             const token = localStorage.getItem("token");
             const userId = localStorage.getItem("userId");
 
@@ -78,7 +70,7 @@ function setupBookingListeners() {
                 return;
             }
 
-            // 3. Construct Booking Object
+            
             const bookingData = {
                 name: "Hair Treatment Session",
                 userId: userId,
@@ -87,9 +79,9 @@ function setupBookingListeners() {
                 time: `${selectedDate} ${selectedTime.split('-')[0].trim()}`
             };
 
-            // 4. Send to Backend
+    
             try {
-                // Visual feedback
+
                 button.disabled = true;
                 const originalText = button.innerText;
                 button.innerText = "Booking...";
@@ -111,5 +103,5 @@ function setupBookingListeners() {
     });
 }
 
-// Initialize
+
 document.addEventListener("DOMContentLoaded", loadSpecialists);

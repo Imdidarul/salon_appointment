@@ -1,4 +1,3 @@
-// Configuration - Match this with your Service ID in the database
 const SERVICE_ID = 1; 
 
 async function loadSpecialists() {
@@ -7,7 +6,6 @@ async function loadSpecialists() {
         const specialists = response.data.specialists;
         const container = document.querySelector(".specialists");
 
-        // Clear hardcoded HTML
         container.innerHTML = "";
 
         specialists.forEach(sp => {
@@ -48,14 +46,13 @@ function setupBookingListeners() {
             const selectedDate = dateInput.value;
             const selectedTime = e.target.innerText;
 
-            // Basic Validation
             if (!selectedDate) {
                 alert("Please select a date first!");
                 return;
             }
 
             const token = localStorage.getItem("token");
-            const userId = localStorage.getItem("userId"); // Ensure you save this on login
+            const userId = localStorage.getItem("userId");
 
             if (!token) {
                 alert("Please login to book a service");
@@ -64,7 +61,7 @@ function setupBookingListeners() {
             }
 
             const bookingData = {
-                name: "Haircut Appointment", // Or pull from service details
+                name: "Haircut Appointment",
                 userId: userId,
                 spId: spId,
                 serviceId: SERVICE_ID,
@@ -77,7 +74,7 @@ function setupBookingListeners() {
                 });
                 
                 alert("Booking Successful!");
-                window.location.href = "../dashboard.html"; // Redirect to a success page
+                window.location.href = "../dashboard.html";
             } catch (error) {
                 console.error(error);
                 alert(error.response?.data || "Booking failed");

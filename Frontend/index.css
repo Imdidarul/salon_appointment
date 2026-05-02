@@ -1,4 +1,3 @@
-/* 1. Global Reset & Body Background */
 body {
     background-image: url("../assets//background_index.jpg");
     background-color: #000;
@@ -20,7 +19,6 @@ body {
     align-items: center;
 }
 
-/* 2. Search Section Styling */
 .search {
     background-color: #1c1c1c;
     padding: 20px;
@@ -60,19 +58,18 @@ body {
     background-color: #009000;
 }
 
-/* 3. The Carousel Logic (The Core Change) */
 .serviceCards {
     width: 100%;
     display: flex;
-    flex-direction: row; /* Aligns cards horizontally */
-    overflow-x: auto;    /* Enables horizontal scrolling */
+    flex-direction: row;
+    overflow-x: auto;
     gap: 25px;
     padding: 20px 10px;
-    scroll-snap-type: x mandatory; /* Makes cards 'snap' into position */
-    scrollbar-width: thin;         /* Minimalist scrollbar for Firefox */
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
 }
 
-/* Custom Scrollbar Styling for Chrome/Safari/Edge */
+
 .serviceCards::-webkit-scrollbar {
     height: 8px;
 }
@@ -85,7 +82,7 @@ body {
 }
 
 .serviceCards h1 {
-    display: none; /* Usually, H1 inside a flex-row carousel breaks the layout */
+    display: none;
 }
 
 .services-container{
@@ -96,20 +93,18 @@ body {
     width: 100%;
 }
 
-/* 4. Individual Service Card Styling */
 .service {
-    min-width: 300px; /* Prevents cards from squishing */
+    min-width: 300px;
     background-color: #1c1c1c;
     border-radius: 15px;
     padding: 15px;
-    /* Add a green border to the active/hovered card like in your image */
     border: 1px solid transparent;
     transition: border 0.3s;
-    flex: 0 0 320px;        /* Fixes card width to 320px; prevents shrinking */
+    flex: 0 0 320px;
     background-color: #1c1c1c;
     border-radius: 15px;
     padding: 20px;
-    scroll-snap-align: center; /* Snaps the card to the center on scroll */
+    scroll-snap-align: center;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
     display: flex;
     flex-direction: column;
@@ -130,7 +125,7 @@ body {
 .service img {
     width: 100%;
     height: 200px;
-    object-fit: cover;    /* Ensures images don't look stretched */
+    object-fit: cover;
     border-radius: 10px;
     margin-bottom: 15px;
 }
@@ -139,7 +134,6 @@ body {
     font-size: 0.95rem;
     color: #b0b0b0;
     line-height: 1.5;
-    /* This creates an ellipsis (...) if the text is too long */
     display: -webkit-box;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
@@ -147,17 +141,16 @@ body {
     margin-bottom: 15px;
 }
 
-/* 5. Duration & Price Labels */
 .service p:nth-last-child(1),
 .service p:nth-last-child(2) {
-    display: block;      /* Ensures price/duration aren't hidden by ellipsis */
+    display: block;
     margin: 5px 0;
     font-weight: bold;
-    color: #4caf50;      /* Green accent for price */
+    color: #4caf50;
     font-size: 1rem;
 }
 
 .service p:nth-last-child(2) {
-    color: aliceblue;    /* White color for duration */
-    margin-top: auto;    /* Pushes duration/price to bottom of card */
+    color: aliceblue;
+    margin-top: auto;
 }
